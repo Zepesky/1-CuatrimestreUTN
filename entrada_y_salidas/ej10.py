@@ -15,10 +15,11 @@ __________________
 
 while True:
     
+    
     x = int(input("Ingrese el importe del producto: "))
     y = str(input("Desea comprar algo mas? (s/n): "))
     a = int(input("Ingrese el importe del producto: "))
-    
+
     if y != "s":
         
         productos = x + a
