@@ -25,7 +25,7 @@ while True:
         #validacion de caracteres str rompe codigo
 
         edad_pac = int(input(Fore.GREEN + "|-Edad: "+ Style.RESET_ALL))        
-        genero = str(input(Fore.GREEN + "|-Género: (Femenino/Masculino): "))
+        genero = str(input(Fore.GREEN + "|-Género: (Femenino/Masculino/Otro): "))
         separador()
 
         #Datos numericos
@@ -40,7 +40,7 @@ while True:
         vomitos = str(input(Fore.YELLOW +"|-Vómitos: (sí/no): "+ Style.RESET_ALL)).lower()
         medicamentos = str(input(Fore.YELLOW +"|-Toma medicación?: (sí/no):"+ Style.RESET_ALL)).lower()
         break
-    except:
+    except ValueError:
         print(Back.RED +"⚠︎ -Error Dato no válido!")
 separador()
 #reglas
@@ -54,8 +54,8 @@ def recomendaciones():
 
     if fiebre and taquicardia and dolor > 7:
         lista.append("Atención urgente.")
-    if (tos == "s" and fiebre) or (respiracion == "Agitada"):
-        lista.append("Posible afección respiratorio.")
+    if (tos in ["s", "si", "sí"]  and fiebre) or (respiracion == "agitada"):
+        lista.append("Posible afección respiratoria.")
     if dolor <= 3:
         lista.append("Condiciones leves control ambulatorio.")
     if 36 <= temperatura <= 37.5:
@@ -89,7 +89,7 @@ print(f"""
 Doctor a cargo: {doctor}
 ------------------------------------
         Datos del paciente
-Paciente: {nombre_pac}
+Paciente: {nombre_pac} {apellido_pac}
 Edad: {edad_pac}
 Genero: {genero}
 ------------------------------------
@@ -97,6 +97,7 @@ Medicacion previa: {medicamentos}
 ------------------------------------
 """)
 print("=" * 32)
+
 for x in resultado:
     if "urgente" in x.lower() or "crítico" in x.lower():
         print(Fore.RED + "⚠ " + x)
@@ -104,4 +105,5 @@ for x in resultado:
         print(Fore.YELLOW + "⚠ " + x)
     else:
         print(Fore.GREEN + "- " + x)
+        
 print("=" * 32)
