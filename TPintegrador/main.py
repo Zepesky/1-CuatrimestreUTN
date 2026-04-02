@@ -2,30 +2,33 @@ from colorama import *
 init(autoreset=True)
 
 def separador():
-    print(Back.WHITE + "=" * 32 + Style.RESET_ALL)
-
+    print(Back.WHITE + "=" * 36 + Style.RESET_ALL)
+        
 
 #Entradas...
 
 print(Fore.RED + """
-===============================
-   ✙ SISTEMA MÉDICO BÁSICO ✙ 
-===============================
+====================================
+    ✙---------MEDICPY---------✙ 
+====================================
 """)
 #Datos doctor
 separador()
+doctor = str(input(Fore.MAGENTA + "|-Doctor a cargo: " + Style.RESET_ALL))
+separador()
+#paciente
+nombre_pac = str(input(Fore.GREEN + "|-Nombre del paciente: "+ Style.RESET_ALL))
+apellido_pac = str(input(Fore.GREEN + "|-Apellido: "+ Style.RESET_ALL))
+
+            #validacion de caracteres str rompe codigo
 while True:
     try:
-        doctor = str(input(Fore.MAGENTA + "|-Doctor a cargo: " + Style.RESET_ALL))
-        separador()
-        #paciente
-        nombre_pac = str(input(Fore.GREEN + "|-Nombre del paciente: "+ Style.RESET_ALL))
-        apellido_pac = str(input(Fore.GREEN + "|-Apellido: "+ Style.RESET_ALL))
-
-        #validacion de caracteres str rompe codigo
-
         edad_pac = int(input(Fore.GREEN + "|-Edad: "+ Style.RESET_ALL))        
         genero = str(input(Fore.GREEN + "|-Género: (Femenino/Masculino/Otro): "))
+        
+        if genero != str:
+            print(Back.RED +"⚠︎ -Error Dato no válido! (INT) ")
+            genero = str(input(Fore.GREEN + "|-Género: (Femenino/Masculino/Otro): "))
         separador()
 
         #Datos numericos
@@ -36,11 +39,14 @@ while True:
 
         #Categoricas
         tos = str(input(Fore.YELLOW +"|-¿Presenta tos? (sí/no): "+ Style.RESET_ALL)).lower()
-        respiracion = str(input(Fore.YELLOW +"|-Respiración: Normal, Agitada, Irregular, Dolor: "+ Style.RESET_ALL)).lower()
+        respiracion = str(input(Fore.YELLOW +"""|-Respiración:  1.Normal
+|               2.Agitada
+|               3.Irregular
+|               4.Dolor: """+ Style.RESET_ALL)). lower()
         vomitos = str(input(Fore.YELLOW +"|-Vómitos: (sí/no): "+ Style.RESET_ALL)).lower()
         medicamentos = str(input(Fore.YELLOW +"|-Toma medicación?: (sí/no):"+ Style.RESET_ALL)).lower()
         break
-    except ValueError:
+    except:
         print(Back.RED +"⚠︎ -Error Dato no válido!")
 separador()
 #reglas
@@ -54,7 +60,7 @@ def recomendaciones():
 
     if fiebre and taquicardia and dolor > 7:
         lista.append("Atención urgente.")
-    if (tos in ["s", "si", "sí"]  and fiebre) or (respiracion == "agitada"):
+    if (tos in ["s", "si", "sí"]  and fiebre) or (respiracion == "2"):
         lista.append("Posible afección respiratoria.")
     if dolor <= 3:
         lista.append("Condiciones leves control ambulatorio.")
@@ -64,9 +70,9 @@ def recomendaciones():
         lista.append("Paciente de riesgo")
     if (vomitos == "s") and dolor <= 5:
         lista.append("Posible problema digestivo")
-    if (respiracion == "dolor") and taquicardia:
+    if (respiracion == "4") and taquicardia:
         lista.append("Evaluar oxigenación")
-    if fiebre and tos == "s" and dolor > 5:
+    if fiebre and tos in ["s", "si", "sí"] and dolor > 5:
         lista.append("Reposo y seguimiento")
     if presion_alta and edad_pac > 50:
         lista.append("Control cardiovascular")
@@ -93,11 +99,15 @@ Paciente: {nombre_pac} {apellido_pac}
 Edad: {edad_pac}
 Genero: {genero}
 ------------------------------------
-Medicacion previa: {medicamentos}
+Medicación previa: {Fore.LIGHTYELLOW_EX}{medicamentos}{Style.RESET_ALL}
+Respiración: {Fore.LIGHTCYAN_EX}{respiracion}{Style.RESET_ALL}
+Presión: {Fore.LIGHTCYAN_EX}{presion}{Style.RESET_ALL}
+Temperatura: {Fore.LIGHTCYAN_EX}{temperatura}{Style.RESET_ALL}
+Dolor: {Fore.LIGHTCYAN_EX}{dolor}{Style.RESET_ALL}
+FrCardiaca: {Fore.LIGHTCYAN_EX}{frec_cardiaca}{Style.RESET_ALL}
 ------------------------------------
 """)
-print("=" * 32)
-
+separador()
 for x in resultado:
     if "urgente" in x.lower() or "crítico" in x.lower():
         print(Fore.RED + "⚠ " + x)
@@ -105,5 +115,4 @@ for x in resultado:
         print(Fore.YELLOW + "⚠ " + x)
     else:
         print(Fore.GREEN + "- " + x)
-        
-print("=" * 32)
+separador()        
