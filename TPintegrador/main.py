@@ -1,4 +1,4 @@
-from GodPlanes import tranfucion
+from GodPlanes import transfusion
 from colorama import *
 
 
@@ -174,4 +174,4 @@ separador()
 #✰NewSkill✰ 
 #from (archivo.py) import (parametro) esto importa
 #   un archivo que este en la misma carpeta
-print(tranfucion(sangre))
+print(transfusion())

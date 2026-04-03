@@ -1,7 +1,7 @@
 #lugar de pruebas de codigo ;)
 from colorama import *
 
-def tranfucion(sangre):
+def transfusion(sangre):
     
     print(Back.RED +f"""
     ====================
