@@ -1,4 +1,7 @@
+from GodPlanes import tranfucion
 from colorama import *
+
+
 init(autoreset=True)
 
 def separador():
@@ -23,7 +26,9 @@ while True:
         nombre_pac = input(Fore.GREEN + "|-Nombre del paciente: "+ Style.RESET_ALL).strip()
         apellido_pac = input(Fore.GREEN + "|-Apellido: "+ Style.RESET_ALL).strip()
         edad_pac = int(input(Fore.GREEN + "|-Edad: "+ Style.RESET_ALL))
-        genero = input(Fore.GREEN + "|-Género: (Femenino/Masculino/Otro): ").strip().lower()
+        genero = input(Fore.GREEN + "|-Género: (Femenino/Masculino/Otro): "+ Style.RESET_ALL).strip().lower()
+        sangre = input(Fore.GREEN + "|-Tipo de Sangre: [A,B,AB,0][+ -]: "+ Style.RESET_ALL).upper().strip()
+        
         
         #✰NewSkill✰
         #.isalpha() es False cuando (" ", "nombre1", "nombre!")
@@ -44,16 +49,23 @@ while True:
             print(Back.RED +"⚠︎ -Error Genero no válido!")
             continue
         
+        if sangre in ["A","B","AB","O"]:
+            signo = input("Ingrese + o - : ").strip()
+            sangre += signo
+            continue
+        
         if edad_pac <= 0 or edad_pac >= 120:
             print(Back.RED +"⚠︎ -Error edad no válida!")
             continue
-        separador()
         
+        separador()
         break
 
     except ValueError:
         print(Back.RED +"⚠︎ -Error la Edad debe ser un numero!")
+        
 #-ayuda esto de validar ya me quemo!
+
 while True:
     try:
         #Datos numericos
@@ -67,7 +79,7 @@ while True:
         respiracion = int(input(Fore.YELLOW +"""|-Respiración:  1.Normal
 |               2.Agitada
 |               3.Irregular
-|               4.Dolor: """+ Style.RESET_ALL)).lower()
+|               4.Dolor: """+ Style.RESET_ALL))
         vomitos = str(input(Fore.YELLOW +"|-Vómitos: (sí/no): "+ Style.RESET_ALL)).lower()
         medicamentos = str(input(Fore.YELLOW +"|-Toma medicación?: (sí/no):"+ Style.RESET_ALL)).lower()
         
@@ -139,6 +151,7 @@ Doctor a cargo: {doctor}
 Paciente: {nombre_pac} {apellido_pac}
 Edad: {edad_pac}
 Genero: {genero}
+Sangre: {sangre}
 ------------------------------------
 Medicación previa: {Fore.LIGHTYELLOW_EX}{medicamentos}{Style.RESET_ALL}
 Respiración: {Fore.LIGHTCYAN_EX}{respiracion}{Style.RESET_ALL}
@@ -156,4 +169,9 @@ for x in resultado:
         print(Fore.YELLOW + "⚠ " + x)
     else:
         print(Fore.GREEN + "- " + x)
-separador()        
+separador()
+
+#✰NewSkill✰ 
+#from (archivo.py) import (parametro) esto importa
+#   un archivo que este en la misma carpeta
+print(tranfucion(sangre))
