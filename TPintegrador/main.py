@@ -5,32 +5,57 @@ def separador():
     print(Back.WHITE + "=" * 36 + Style.RESET_ALL)
         
 
-#Entradas...
-
 print(Fore.RED + """
 ====================================
     ✙---------MEDICPY---------✙ 
 ====================================
 """)
-#Datos doctor
-separador()
-doctor = str(input(Fore.MAGENTA + "|-Doctor a cargo: " + Style.RESET_ALL))
-separador()
-#paciente
-nombre_pac = str(input(Fore.GREEN + "|-Nombre del paciente: "+ Style.RESET_ALL))
-apellido_pac = str(input(Fore.GREEN + "|-Apellido: "+ Style.RESET_ALL))
 
-            #validacion de caracteres str rompe codigo
+#validacion de caracteres 
+#Entradas...
 while True:
     try:
-        edad_pac = int(input(Fore.GREEN + "|-Edad: "+ Style.RESET_ALL))        
-        genero = str(input(Fore.GREEN + "|-Género: (Femenino/Masculino/Otro): "))
-        
-        if genero != str:
-            print(Back.RED +"⚠︎ -Error Dato no válido! (INT) ")
-            genero = str(input(Fore.GREEN + "|-Género: (Femenino/Masculino/Otro): "))
         separador()
+        #Datos doctor
+        doctor = input(Fore.MAGENTA + "|-Doctor a cargo: " + Style.RESET_ALL).strip()
+        separador()
+        #paciente
+        nombre_pac = input(Fore.GREEN + "|-Nombre del paciente: "+ Style.RESET_ALL).strip()
+        apellido_pac = input(Fore.GREEN + "|-Apellido: "+ Style.RESET_ALL).strip()
+        edad_pac = int(input(Fore.GREEN + "|-Edad: "+ Style.RESET_ALL))
+        genero = input(Fore.GREEN + "|-Género: (Femenino/Masculino/Otro): ").strip().lower()
+        
+        #✰NewSkill✰
+        #.isalpha() es False cuando (" ", "nombre1", "nombre!")
+        #.replace ("lo que busco", "lo nuevo")
+        if not (doctor.replace(" ", "")).isalpha():
+            print(Back.RED +"⚠︎ -Error Solo letras!")
+            continue
+        
+        if not (nombre_pac.replace(" ", "")).isalpha():
+            print(Back.RED +"⚠︎ -Error Nombre no valido!")
+            continue
+        
+        if not (apellido_pac.replace(" ", "")).isalpha():
+            print(Back.RED +"⚠︎ -Error Apellido no valido!")
+            continue
+        
+        if genero not in ["femenino","masculino","otro"]:
+            print(Back.RED +"⚠︎ -Error Genero no válido!")
+            continue
+        
+        if edad_pac <= 0 or edad_pac >= 120:
+            print(Back.RED +"⚠︎ -Error edad no válida!")
+            continue
+        separador()
+        
+        break
 
+    except ValueError:
+        print(Back.RED +"⚠︎ -Error la Edad debe ser un numero!")
+#-ayuda esto de validar ya me quemo!
+while True:
+    try:
         #Datos numericos
         temperatura = float(input(Fore.YELLOW +"|Temperatura del paciente: "+ Style.RESET_ALL))
         frec_cardiaca = float(input(Fore.YELLOW +"|Frecuencia cardíaca: "+ Style.RESET_ALL))
@@ -39,15 +64,32 @@ while True:
 
         #Categoricas
         tos = str(input(Fore.YELLOW +"|-¿Presenta tos? (sí/no): "+ Style.RESET_ALL)).lower()
-        respiracion = str(input(Fore.YELLOW +"""|-Respiración:  1.Normal
+        respiracion = int(input(Fore.YELLOW +"""|-Respiración:  1.Normal
 |               2.Agitada
 |               3.Irregular
-|               4.Dolor: """+ Style.RESET_ALL)). lower()
+|               4.Dolor: """+ Style.RESET_ALL)).lower()
         vomitos = str(input(Fore.YELLOW +"|-Vómitos: (sí/no): "+ Style.RESET_ALL)).lower()
         medicamentos = str(input(Fore.YELLOW +"|-Toma medicación?: (sí/no):"+ Style.RESET_ALL)).lower()
+        
+        if tos not in ["s", "si", "sí", "no"]:
+            print(Back.RED +"⚠︎ -Error Solo letras!")
+            continue
+                
+        if vomitos not in ["s", "si", "sí", "no"]:
+            print(Back.RED +"⚠︎ -Error Solo letras!")
+            continue 
+                
+        if medicamentos not in ["s", "si", "sí", "no"]:
+            print(Back.RED +"⚠︎ -Error Solo letras!")
+            continue
+        if not 0 <= dolor <= 10:
+            print(Back.RED + "⚠︎ -Error escala de dolor debe ser 0-10!")
+            continue            
+                    
         break
-    except:
+    except ValueError:
         print(Back.RED +"⚠︎ -Error Dato no válido!")
+        
 separador()
 #reglas
 def recomendaciones():
@@ -68,7 +110,7 @@ def recomendaciones():
         lista.append("Temperatura normal")
     if edad_pac > 65 and fiebre and presion_alta:
         lista.append("Paciente de riesgo")
-    if (vomitos == "s") and dolor <= 5:
+    if vomitos in ["s", "si", "sí"] and dolor <= 5:
         lista.append("Posible problema digestivo")
     if (respiracion == "4") and taquicardia:
         lista.append("Evaluar oxigenación")
@@ -88,7 +130,6 @@ def recomendaciones():
     return lista
     
 resultado = recomendaciones()
-
     
 print(f"""
 ====================================
