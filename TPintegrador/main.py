@@ -48,9 +48,8 @@ while True:
             print(Back.RED +"⚠︎ -Error Genero no válido!")
             continue
         
-        if sangre in ["A","B","AB","O"]:
-            signo = input("Ingrese + o - : ").strip()
-            sangre += signo
+        if sangre not in ["A+","A-","B+","B-","AB+","AB-","O+","O-"]:
+            print(Back.RED +"⚠︎ -Tipo de sangre no válido!")
             continue
         
         if edad_pac <= 0 or edad_pac >= 120:
@@ -99,6 +98,10 @@ while True:
             print(Back.RED +"⚠︎ -Error Solo letras!")
             continue
         
+        if respiracion not in [1,2,3,4]:
+            print(Back.RED +"⚠︎ -Opción inválida!")
+            continue
+        
         if not 0 <= dolor <= 10:
             print(Back.RED + "⚠︎ -Error escala de dolor debe ser 0-10!")
             continue            
@@ -119,7 +122,7 @@ def recomendaciones():
 
     if fiebre and taquicardia and dolor > 7:
         lista.append("Atención urgente.")
-    if (tos in ["s", "si", "sí"]  and fiebre) or (respiracion == "2"):
+    if (tos in ["s", "si", "sí"]  and fiebre) or (respiracion == 2):
         lista.append("Posible afección respiratoria.")
     if dolor <= 3:
         lista.append("Condiciones leves control ambulatorio.")
@@ -129,7 +132,7 @@ def recomendaciones():
         lista.append("Paciente de riesgo")
     if vomitos in ["s", "si", "sí"] and dolor <= 5:
         lista.append("Posible problema digestivo")
-    if (respiracion == "4") and taquicardia:
+    if (respiracion == 4) and taquicardia:
         lista.append("Evaluar oxigenación")
     if fiebre and tos in ["s", "si", "sí"] and dolor > 5:
         lista.append("Reposo y seguimiento")
@@ -141,19 +144,23 @@ def recomendaciones():
         lista.append("Fiebre alta")
     if edad_pac <= 12 and fiebre:
         lista.append("Paciente pediátrico con fiebre")
-    if not lista:
-        lista.append("Sin indicadores de riesgo importantes")
-    if ejercicio in "s,si,sí":
+    if ejercicio in ["s","si","sí"]:
         cuantas_veces = int(input("¿Cuantas veces a la semana lo haces? 1/5: "))
-        
+    if not 1 <= cuantas_veces <= 7:
+        print("Valor inválido")
+    else:    
         if  cuantas_veces <= 2:
             lista.append("Podrias incrementar a tres veces por semana para lograr una buena forma fisica")
         elif cuantas_veces <=4:
             lista.append("Estas en buena forma física")
-        elif cuantas_veces >= 5:
+        else:
             lista.append("Tu nivel de actividad fisica es muy bueno")
-    if ejercicio in "n,no,nó":
+        
+    if ejercicio in ["n","no","nó"]:
         lista.append("Deberia practicar 3 veces por semana en lo posible")
+    
+    if not lista:
+        lista.append("Sin indicadores de riesgo importantes")
 
     return lista
     
