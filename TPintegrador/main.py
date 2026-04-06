@@ -1,7 +1,6 @@
 from GodPlanes import transfusion
 from colorama import *
 
-
 init(autoreset=True)
 
 def separador():
@@ -81,7 +80,8 @@ while True:
 |               3.Irregular
 |               4.Dolor: """+ Style.RESET_ALL))
         vomitos = str(input(Fore.YELLOW +"|-Vómitos: (sí/no): "+ Style.RESET_ALL)).lower()
-        medicamentos = str(input(Fore.YELLOW +"|-Toma medicación?: (sí/no):"+ Style.RESET_ALL)).lower()
+        medicamentos = str(input(Fore.YELLOW +"|-Toma medicación? (sí/no): "+ Style.RESET_ALL)).lower()
+        ejercicio = str(input(Fore.YELLOW + "|-¿Hace ejercicio? (sí/no): "+ Style.RESET_ALL)).lower()
         
         if tos not in ["s", "si", "sí", "no"]:
             print(Back.RED +"⚠︎ -Error Solo letras!")
@@ -94,6 +94,11 @@ while True:
         if medicamentos not in ["s", "si", "sí", "no"]:
             print(Back.RED +"⚠︎ -Error Solo letras!")
             continue
+        
+        if ejercicio not in ["s", "si", "sí", "no"]:
+            print(Back.RED +"⚠︎ -Error Solo letras!")
+            continue
+        
         if not 0 <= dolor <= 10:
             print(Back.RED + "⚠︎ -Error escala de dolor debe ser 0-10!")
             continue            
@@ -138,7 +143,18 @@ def recomendaciones():
         lista.append("Paciente pediátrico con fiebre")
     if not lista:
         lista.append("Sin indicadores de riesgo importantes")
+    if ejercicio in "s,si,sí":
+        cuantas_veces = int(input("¿Cuantas veces a la semana lo haces? 1/5: "))
         
+        if  cuantas_veces <= 2:
+            lista.append("Podrias incrementar a tres veces por semana para lograr una buena forma fisica")
+        elif cuantas_veces <=4:
+            lista.append("Estas en buena forma física")
+        elif cuantas_veces >= 5:
+            lista.append("Tu nivel de actividad fisica es muy bueno")
+    if ejercicio in "n,no,nó":
+        lista.append("Deberia practicar 3 veces por semana en lo posible")
+
     return lista
     
 resultado = recomendaciones()
@@ -159,6 +175,7 @@ Presión: {Fore.LIGHTCYAN_EX}{presion}{Style.RESET_ALL}
 Temperatura: {Fore.LIGHTCYAN_EX}{temperatura}{Style.RESET_ALL}
 Dolor: {Fore.LIGHTCYAN_EX}{dolor}{Style.RESET_ALL}
 FrCardiaca: {Fore.LIGHTCYAN_EX}{frec_cardiaca}{Style.RESET_ALL}
+Ejercicio: {Fore.LIGHTCYAN_EX}{ejercicio}{Style.RESET_ALL}
 ------------------------------------
 """)
 separador()
