@@ -146,16 +146,15 @@ def recomendaciones():
         lista.append("Paciente pediátrico con fiebre")
     if ejercicio in ["s","si","sí"]:
         cuantas_veces = int(input("¿Cuantas veces a la semana lo haces? 1/5: "))
-    if not 1 <= cuantas_veces <= 7:
-        print("Valor inválido")
-    else:    
-        if  cuantas_veces <= 2:
-            lista.append("Podrias incrementar a tres veces por semana para lograr una buena forma fisica")
-        elif cuantas_veces <=4:
-            lista.append("Estas en buena forma física")
-        else:
-            lista.append("Tu nivel de actividad fisica es muy bueno")
-        
+        if not 1 <= cuantas_veces <= 7:
+            print("Valor inválido")
+        else:    
+            if  cuantas_veces <= 2:
+                lista.append("Podrias incrementar a tres veces por semana para lograr una buena forma fisica")
+            elif cuantas_veces <=4:
+                lista.append("Estas en buena forma física")
+            else:
+                lista.append("Tu nivel de actividad fisica es muy bueno")
     if ejercicio in ["n","no","nó"]:
         lista.append("Deberia practicar 3 veces por semana en lo posible")
     
@@ -184,6 +183,7 @@ Dolor: {Fore.LIGHTCYAN_EX}{dolor}{Style.RESET_ALL}
 FrCardiaca: {Fore.LIGHTCYAN_EX}{frec_cardiaca}{Style.RESET_ALL}
 Ejercicio: {Fore.LIGHTCYAN_EX}{ejercicio}{Style.RESET_ALL}
 ------------------------------------
+====================================
 """)
 separador()
 for x in resultado:
