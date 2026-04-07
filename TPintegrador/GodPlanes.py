@@ -2,7 +2,7 @@
 from colorama import *
 
 def transfusion(sangre):
-    
+
     print(Back.RED +f"""
     ====================
         3.Trasfucion
