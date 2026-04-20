@@ -1,0 +1,23 @@
+
+
+# with open("pacientes.txt", "a") as archivo:
+#     archivo.write(f"""
+# ====================================
+# Doctor a cargo: {doctor}
+# ------------------------------------
+# Paciente: {nombre_paciente} {apellido_paciente}
+# Edad: {edad_paciente}
+# Genero: {genero}
+# Sangre: {sangre}
+# ------------------------------------
+# Medicación previa: {medicamentos}
+# Respiración: {respiracion_str}
+# Presión: {presion}
+# Temperatura: {temperatura}
+# Dolor: {dolor}
+# FrCardiaca: {frecuencia_cardiaca}
+# Ejercicio: {ejercicio}
+# Agua: {agua_paciente:.2f} L
+# ------------------------------------
+# ====================================
+# """)

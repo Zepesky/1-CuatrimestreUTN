@@ -15,3 +15,21 @@ y = float(input("Asigne valor a Y: "))
 
 op = int(input("Que operacion desea realizar?: "))
 
+resultado = ""
+
+if op == 1:
+    resultado = "La suma es: " + str(x + y)
+
+if op == 2:
+    resultado = "La resta es: " + str(x - y)
+
+if op == 3:
+    resultado = "La multiplicación es: " + str(x * y)
+
+if op == 4:
+    if y != 0:
+        resultado = "La división es: " + str(x / y)
+    else:
+        resultado = "Error: no se puede dividir por cero"
+
+print(resultado)

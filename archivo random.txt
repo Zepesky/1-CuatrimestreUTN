@@ -1,0 +1,76 @@
+🧠 1) ESTADÍSTICAS CON PROMEDIOS (MEDIA)
+
+Son las más importantes porque te dan el “estado general” de la población.
+
+🩺 Salud general
+Promedio de edad de los pacientes
+Promedio de temperatura corporal
+Promedio de frecuencia cardíaca
+Promedio de presión arterial
+Promedio de nivel de dolor
+
+👉 Sirven para ver si la población está sana o no.
+
+💧 Hidratación
+Promedio de litros de agua recomendados por paciente
+
+👉 Te dice si tu población necesita más hidratación general.
+
+🏃 Actividad física
+Promedio de veces que hacen ejercicio por semana
+
+👉 Sirve para medir nivel de vida saludable.
+
+📈 2) ESTADÍSTICAS CON MÁXIMOS
+
+Te muestran el “caso más extremo”.
+
+🚨 Casos críticos
+Paciente con mayor temperatura *
+Paciente con mayor frecuencia cardíaca*
+Paciente con mayor presión arterial *
+Paciente con mayor dolor *
+
+👉 Sirve para detectar el paciente más riesgoso.
+
+📉 3) ESTADÍSTICAS CON MÍNIMOS
+
+Te muestran el extremo contrario.
+
+🌿 Casos más leves
+Paciente con menor temperatura
+Paciente con menor dolor
+Paciente con menor presión
+Paciente más joven
+
+👉 Sirve para ver el “caso más sano” o menos riesgoso.
+
+🧪 4) ESTADÍSTICAS MÁS AVANZADAS (muy útiles)
+⚠️ Riesgo general
+Porcentaje de pacientes con fiebre
+Porcentaje con taquicardia
+Porcentaje con presión alta
+Porcentaje en estado crítico
+🩸 Sangre
+Tipo de sangre más común
+Tipo de sangre menos común
+👥 Demografía
+Cantidad de menores de edad
+Cantidad de adultos mayores
+Ratio hombre/mujer
+📊 5) ESTADÍSTICAS “PRO” (nivel sistema real)
+
+Si querés hacerlo más avanzado:
+
+Paciente con mayor “riesgo total” (combinando síntomas)
+Promedio de riesgo por grupo de edad
+Comparación: fumadores/no fumadores (si lo agregás)
+Relación entre ejercicio y presión arterial
+🎯 RESUMEN MENTAL
+
+Pensalo así:
+
+📊 Promedio = estado general
+📈 Máximo = peor caso
+📉 Mínimo = mejor caso
+⚠️ Porcentajes = distribución de riesgos`

@@ -1,4 +1,4 @@
-#5. Pedirle al usuario su edad, determinar si el usuario es adolescente (edad entre 13 y 17 inclusive)
+#6. Pedirle al usuario su edad, determinar si el usuario NO es adolescente.
 
 edad = int(input("Ingrese su edad: "))
 
